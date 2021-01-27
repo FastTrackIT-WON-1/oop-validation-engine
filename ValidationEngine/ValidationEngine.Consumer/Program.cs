@@ -27,12 +27,16 @@ namespace ValidationEngine.Consumer
                     FirstName = "Elena",
                     LastName = "Basescu",
                     CNP = "2720428390052",
-                    Age = 25
+                    Age = 16
                 }
             };
 
             PersonListProcessor processor = new PersonListProcessor(
-                new Library.ValidationRule[] { });
+                new Library.ValidationRule[] { 
+                    new PersonFirstNameAndLastNameIsValidRule(),
+                    new PersonCNPIsValidRule(),
+                    new PersonIsAdultRule()
+                });
 
             processor.Process(persons);
         }
